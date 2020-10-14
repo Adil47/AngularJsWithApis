@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="script.js"></script>
+
+</head>
+
+<body ng-app="StudentModule" ng-controller="StudentController">
+
+
+
+
+
+
+	
+	<div class="row">
+	<div class="col-md-4">
+			<input type="text" class="form-control"  ng-model="Name">
+			<input type="text" class="form-control"  ng-model="Phone">
+			<input type="text" class="form-control"  ng-model="Email">
+			<input type="text" class="form-control"  ng-model="Password">
+			<input type="button" ng-hide="isUpdate" value="Submit"  ng-click="insert()" >
+			<input type="button" ng-show="isUpdate" value="Update"  ng-click="update()" >
+			
+		</div>
+	</div>
+	
+	<center>
+	<input type="text" ng-model="str" class="form-control" >
+	<table class="table" style="width: 90%">
+		<tr>
+			<th>StudentId</th>
+			<th>Name</th>
+			<th>Phone</th>
+			<th>Email</th>
+			<th>Password</th>
+			<th>Delete</th>
+			<th>Edit</th>
+		</tr>
+		<tr ng-repeat="std in Students | filter:str ">
+			<td>{{std.StudentId}}</td>
+			<td>{{std.Name}}</td>
+			<td>{{std.Phone}}</td>
+			<td>{{std.Email}}</td>
+			<td>{{std.Password}}</td>
+			<td><input type="button" ng-click="delete(std.StudentId)" value="Delete"  class="btn btn-danger"></td>
+			<td><input type="button" value="Edit" ng-click="edit($index,std.StudentId)" class="btn btn-warning"></td>
+			
+		</tr>
+		
+	</table>
+</center>
+
+
+
+</body>
+</html>
